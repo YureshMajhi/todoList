@@ -1,6 +1,3 @@
-import style from "./main.css";
-import component from "./component.js";
+import style from "./Styles/main.css";
 
 console.log("hello");
-
-document.body.appendChild(component());
