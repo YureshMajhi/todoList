@@ -4,9 +4,71 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/e0bf22fe8b.js"
+      crossorigin="anonymous"
+    ></script>
+
     <title><%=htmlWebpackPlugin.options.title%></title>
   </head>
   <body>
-    <h1><%=htmlWebpackPlugin.options.title%></h1>
+    <!-- Header Section -->
+    <header class="header">
+      <i class="fa-solid fa-check-double"></i>
+      <h1><%=htmlWebpackPlugin.options.title%></h1>
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Sidebar Section -->
+    <div class="side-bar">
+      <div>
+        <p class="inbox-el"><i class="fa-solid fa-inbox"></i> Inbox</p>
+        <p class="inbox-el"><i class="fa-solid fa-calendar-day"></i> Today</p>
+        <p class="inbox-el">
+          <i class="fa-solid fa-calendar-week"></i> This Week
+        </p>
+      </div>
+    </div>
+    <!-- Sidebar Section End -->
+
+    <!-- Main Section -->
+    <main class="container"></main>
+
+    <!-- Form Section -->
+    <div class="form-container">
+      <form id="todo-form">
+        <h3>Create a new todo...</h3>
+        <!-- input section -->
+        <div class="form-content">
+          <label for="title"
+            >Title <input type="text" id="title" placeholder="10km run"
+          /></label>
+          <label for="description">
+            Description
+            <textarea
+              id="description"
+              rows="3"
+              placeholder="Description"
+            ></textarea>
+          </label>
+          <label for="date"
+            ><span>Due Date </span><input type="date" id="date" /></label
+          ><br />
+          <span>Select Priority </span>
+          <label for="lowP"
+            ><input type="radio" name="priority" id="lowP" /> Low</label
+          ><label for="MediumP"
+            ><input type="radio" name="priority" id="MediumP" /> Medium</label
+          >
+          <label for="HighP"
+            ><input type="radio" name="priority" id="HighP" /> High</label
+          >
+          <input type="submit" value="Add To Do" />
+        </div>
+      </form>
+    </div>
+    <!-- Form Section End -->
   </body>
 </html>

@@ -1,4 +1,157 @@
+/* font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap");
+
+:root {
+  --dark-gray: #413e3e;
+  --midlight-gray: #c4c3c3;
+  --hover-gray: #9c9999;
+  --body-gray: #dddcdc;
+}
+
 * {
   margin: 0;
   padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: var(--body-gray);
+  padding-left: 18rem;
+  padding-top: 7rem;
+}
+
+/* Header */
+.header {
+  background-color: var(--dark-gray);
+  padding: 1.4rem 0 1.4rem 3rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.header h1,
+.header i {
+  display: inline;
+  color: white;
+  font-weight: 600;
+  font-size: 2.4rem;
+  letter-spacing: 1px;
+  word-spacing: 5px;
+}
+
+.header h1 {
+  padding-left: 0.5rem;
+}
+
+/* Sidebar */
+.side-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  top: 102px;
+  z-index: 0;
+  background-color: var(--midlight-gray);
+  padding: 1rem;
+  width: 13rem;
+  color: var(--dark-gray);
+  font-weight: 400;
+}
+
+.side-bar div p i {
+  padding-right: 0.5rem;
+}
+
+.side-bar div p {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.side-bar div p:hover {
+  background-color: var(--hover-gray);
+  font-weight: 600;
+}
+
+/* Body */
+.container h1 {
+  color: var(--dark-gray);
+}
+
+/* Inbox Tab */
+.addTask {
+  margin-top: 1rem;
+  width: 90%;
+  padding: 0.4rem 1rem;
+  text-align: left;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--midlight-gray);
+  color: var(--dark-gray);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.addTask:hover {
+  font-weight: 600;
+  background-color: var(--hover-gray);
+}
+
+/* Form Section */
+.form-container {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.192);
+  height: 100vh;
+  width: 100vw;
+}
+
+form {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  background-color: var(--body-gray);
+  width: 40rem;
+  padding: 0 1 2rem 1.4rem;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+form h3 {
+  background-color: var(--dark-gray);
+  padding: 0.4rem 0 0.4rem 0.7rem;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.form-content {
+  margin: 0.5rem 1rem 1rem 1rem;
+}
+
+form {
+  color: var(--dark-gray);
+}
+
+input[type="text"],
+input[type="submit"],
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+input[type="radio"] {
+  margin-left: 10px;
+}
+
+input,
+textarea {
+  margin-bottom: 0.8rem;
 }
