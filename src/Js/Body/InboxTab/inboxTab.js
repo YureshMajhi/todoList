@@ -1,5 +1,3 @@
-import { inputTodo } from "../inputForm/inputTodo";
-
 export const inboxTabFile = () => {
   // Selecting the container and emptiying it to add new contents
   const container = document.querySelector(".container");
@@ -22,11 +20,6 @@ export const inboxTabFile = () => {
 
   // Add task button clicked
   document.querySelector(".addTask").addEventListener("click", function () {
-    addTaskClicked();
+    document.querySelector(".form-container").style = "display: block";
   });
-};
-
-// Add task button clicked
-const addTaskClicked = () => {
-  document.body.appendChild(inputTodo());
 };
