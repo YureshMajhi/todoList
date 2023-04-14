@@ -16,7 +16,8 @@
 
 body {
   background-color: var(--body-gray);
-  padding-left: 18rem;
+  padding-left: 30%;
+  padding-right: 15%;
   padding-top: 7rem;
 }
 
@@ -83,7 +84,7 @@ body {
 /* Inbox Tab */
 .addTask {
   margin-top: 1rem;
-  width: 90%;
+  width: 100%;
   padding: 0.4rem 1rem;
   text-align: left;
   border: none;
@@ -97,6 +98,50 @@ body {
 .addTask:hover {
   font-weight: 600;
   background-color: var(--hover-gray);
+}
+
+.todoList {
+  margin-top: 1rem;
+}
+
+.todoList div {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 40px 5px 5px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.todoList div:hover {
+  background-color: var(--midlight-gray);
+}
+
+.delete-btn {
+  position: absolute;
+  right: -10px;
+  top: -5px;
+  border-radius: 50%;
+  height: 1.5rem;
+  width: 1.5rem;
+  border: 1px solid var(--dark-gray);
+  background-color: var(--dark-gray);
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  display: none;
+}
+
+.todoList div:hover .delete-btn {
+  display: block;
+}
+
+.todoList div p:first-of-type {
+  font-weight: 600;
+}
+.todoList div p:last-of-type {
+  color: var(--dark-gray);
 }
 
 /* Form Section */
@@ -155,3 +200,5 @@ input,
 textarea {
   margin-bottom: 0.8rem;
 }
+
+/* ------------------------------------------------------------------------------------- */

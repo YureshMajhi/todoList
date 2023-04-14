@@ -37,6 +37,7 @@ document.querySelector("#submit").addEventListener("click", function (event) {
   // Hiding the form after all process is finished
   document.querySelector(".form-container").style = "display: none";
 
+  // Rendering the new todo in the page
   renderTodo();
 });
 

@@ -1,9 +1,11 @@
 import { form } from "../Form/form.js";
-import todoArr from "../Todo Array/todoArr.js";
+import { renderTodo } from "../Todo Array/todoArr.js";
 
+export const container = document.querySelector(".container");
+
+// Main function for Inbox Tab
 export const inboxTabFile = () => {
-  // Selecting the container and emptiying it to add new contents
-  const container = document.querySelector(".container");
+  // Removing the contents of container to add new contents
   container.innerHTML = "";
 
   // Creating Header
@@ -16,10 +18,9 @@ export const inboxTabFile = () => {
   addTaskBtn.classList.add("addTask");
 
   // Appending the header and the button in the container
-  container.appendChild(header);
-  container.appendChild(addTaskBtn);
+  container.append(header, addTaskBtn);
 
-  document.body.appendChild(container);
+  renderTodo();
 
   // Add task button clicked
   document.querySelector(".addTask").addEventListener("click", function () {
