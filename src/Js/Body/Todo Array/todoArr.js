@@ -19,10 +19,8 @@ export const renderTodo = () => {
   todoDiv.innerHTML = "";
 
   todoArr.forEach(function (todo) {
-    // Creating div for each individual array
     const individualDiv = document.createElement("div");
 
-    // Assigning variables for all form values
     const titleName = document.createElement("p");
     titleName.textContent = todo.title;
 

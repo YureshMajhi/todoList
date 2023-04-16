@@ -16,25 +16,20 @@ export const form = () => {
   document.querySelector(".form-container").style = "display: block";
 };
 
-// form button click behaviour
 document.querySelector("#submit").addEventListener("click", function (event) {
-  // removing the default behaviour of submit button
   event.preventDefault();
 
   // Check which radio button is checked
   chechPriority();
 
-  // Checking if value exists in form before pushing it to array
   if (title.value && date.value) {
     todoArr.push(updateFormValue());
   } else {
     return;
   }
 
-  // Clearing the value of form after submission
   clearFormValue();
 
-  // Hiding the form after all process is finished
   document.querySelector(".form-container").style = "display: none";
 
   // Rendering the new todo in the page

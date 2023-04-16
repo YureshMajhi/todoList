@@ -5,14 +5,11 @@ export const container = document.querySelector(".container");
 
 // Main function for Inbox Tab
 export const inboxTabFile = () => {
-  // Removing the contents of container to add new contents
   container.innerHTML = "";
 
-  // Creating Header
   const header = document.createElement("h1");
   header.textContent = "Inbox";
 
-  // Creating add task button
   const addTaskBtn = document.createElement("button");
   addTaskBtn.textContent = "+ Add task";
   addTaskBtn.classList.add("addTask");
@@ -20,6 +17,10 @@ export const inboxTabFile = () => {
   // Appending the header and the button in the container
   container.append(header, addTaskBtn);
 
+  /* if local storage exists then rendering todo from local storage
+     by assigning the value of todoArr to todoLocal in its own
+     function page
+  */
   if (todoLocal) {
     setTodoArr(todoLocal);
     renderTodo();
