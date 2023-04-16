@@ -1,4 +1,4 @@
-import todoArr from "../Todo Array/todoArr";
+import { todoArr } from "../Todo Array/todoArr";
 import { renderTodo } from "../Todo Array/todoArr";
 
 const title = document.querySelector("#title");

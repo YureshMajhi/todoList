@@ -1,5 +1,5 @@
 import { form } from "../Form/form.js";
-import { renderTodo } from "../Todo Array/todoArr.js";
+import { renderTodo, setTodoArr, todoLocal } from "../Todo Array/todoArr.js";
 
 export const container = document.querySelector(".container");
 
@@ -20,7 +20,10 @@ export const inboxTabFile = () => {
   // Appending the header and the button in the container
   container.append(header, addTaskBtn);
 
-  renderTodo();
+  if (todoLocal) {
+    setTodoArr(todoLocal);
+    renderTodo();
+  }
 
   // Add task button clicked
   document.querySelector(".addTask").addEventListener("click", function () {

@@ -1,11 +1,14 @@
 import { container } from "../InboxTab/inboxTab";
 
-const todoArr = [
-  { title: "hello", description: "hello", date: "222222", priority: "Low" },
-  { title: "hi", description: "hi", date: "333333", priority: "Medium" },
-  { title: "how", description: "how", date: "44444444444", priority: "High" },
-];
-export default todoArr;
+export let todoArr = [];
+
+export const todoLocal = JSON.parse(localStorage.getItem("todoArr"));
+
+/* if Local storage exists then assigning the value of todoArr
+to todoLocal from Inbox tab */
+export function setTodoArr(newTodoArr) {
+  todoArr = newTodoArr;
+}
 
 // Creating a div to list all todo items
 const todoDiv = document.createElement("div");
@@ -35,4 +38,6 @@ export const renderTodo = () => {
     todoDiv.appendChild(individualDiv);
     container.appendChild(todoDiv);
   });
+
+  localStorage.setItem("todoArr", JSON.stringify(todoArr));
 };
