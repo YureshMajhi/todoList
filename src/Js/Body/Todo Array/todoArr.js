@@ -30,6 +30,8 @@ export const renderTodo = () => {
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "x";
     deleteBtn.classList.add("delete-btn");
+    deleteBtn.id = todo.id;
+    deleteBtn.addEventListener("click", deleteTodo);
 
     // Adding the elements to the page
     individualDiv.append(titleName, dateName, deleteBtn);
@@ -38,4 +40,19 @@ export const renderTodo = () => {
   });
 
   localStorage.setItem("todoArr", JSON.stringify(todoArr));
+};
+
+const deleteTodo = (e) => {
+  removeTodo(e);
+  renderTodo();
+};
+
+const removeTodo = (e) => {
+  todoArr = todoArr.filter(function (todo) {
+    if (todo.id === e.target.id) {
+      return false;
+    } else {
+      return true;
+    }
+  });
 };

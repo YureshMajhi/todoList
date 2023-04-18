@@ -38,11 +38,12 @@ document.querySelector("#submit").addEventListener("click", function (event) {
 
 // ------------------------------------------------------------------------------------------------------------------------
 // Storing values in a constructor
-function FormValue(title, description, date, priority) {
+function FormValue(title, description, date, priority, id) {
   this.title = title;
   this.description = description;
   this.date = date;
   this.priority = priority;
+  this.id = id;
 }
 
 // Updating the form value using constructor
@@ -51,7 +52,8 @@ const updateFormValue = () => {
     title.value,
     description.value,
     date.value,
-    priority
+    priority,
+    "" + new Date().getTime()
   );
   return formData;
 };
