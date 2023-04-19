@@ -21,8 +21,24 @@ export const renderTodo = () => {
   todoArr.forEach(function (todo) {
     const individualDiv = document.createElement("div");
 
+    const checkBox = document.createElement("input");
+    checkBox.type = "checkbox";
+
+    // Set color according to priority
+    if (todo.priority == "Low") {
+      individualDiv.style = "background-color: rgba(202, 202, 83, 0.439)";
+    } else if (todo.priority == "Medium") {
+      individualDiv.style = "background-color: rgba(87, 204, 87, 0.439)";
+    } else if (todo.priority == "High") {
+      individualDiv.style = "background-color: rgba(210, 94, 94, 0.439)";
+    }
+
     const titleName = document.createElement("p");
     titleName.textContent = todo.title;
+
+    if (checkBox.checked == true) {
+      titleName.style = "text-decoration: line-through";
+    }
 
     const dateName = document.createElement("p");
     dateName.textContent = todo.date;
@@ -34,6 +50,7 @@ export const renderTodo = () => {
     deleteBtn.addEventListener("click", deleteTodo);
 
     // Adding the elements to the page
+    individualDiv.appendChild(checkBox);
     individualDiv.append(titleName, dateName, deleteBtn);
     todoDiv.appendChild(individualDiv);
     container.appendChild(todoDiv);
