@@ -168,6 +168,25 @@ form {
   overflow: hidden;
 }
 
+form button {
+  position: absolute;
+  right: 0.2rem;
+  top: 0.2rem;
+  height: 2rem;
+  width: 2rem;
+  border: none;
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+form button:hover {
+  transform: scale(1.2);
+}
+
 form h3 {
   background-color: var(--dark-gray);
   padding: 0.4rem 0 0.4rem 0.7rem;

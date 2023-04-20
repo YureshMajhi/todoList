@@ -21,8 +21,19 @@ export const renderTodo = () => {
   todoArr.forEach(function (todo) {
     const individualDiv = document.createElement("div");
 
+    const titleName = document.createElement("p");
+    titleName.textContent = todo.title;
+
     const checkBox = document.createElement("input");
     checkBox.type = "checkbox";
+    checkBox.dataset.todoId = todo.id;
+    checkBox.onchange = changeTodo;
+    if (todo.isDone == true) {
+      checkBox.checked = true;
+      titleName.style = "text-decoration: line-through";
+    } else {
+      checkBox.checked = false;
+    }
 
     // Set color according to priority
     if (todo.priority == "Low") {
@@ -31,13 +42,6 @@ export const renderTodo = () => {
       individualDiv.style = "background-color: rgba(87, 204, 87, 0.439)";
     } else if (todo.priority == "High") {
       individualDiv.style = "background-color: rgba(210, 94, 94, 0.439)";
-    }
-
-    const titleName = document.createElement("p");
-    titleName.textContent = todo.title;
-
-    if (checkBox.checked == true) {
-      titleName.style = "text-decoration: line-through";
     }
 
     const dateName = document.createElement("p");
@@ -70,6 +74,24 @@ const removeTodo = (e) => {
       return false;
     } else {
       return true;
+    }
+  });
+};
+
+const changeTodo = (e) => {
+  const checkbox = e.target;
+
+  const todoId = checkbox.dataset.todoId;
+  const checked = checkbox.checked;
+
+  toggleTodo(todoId, checked);
+  renderTodo();
+};
+
+const toggleTodo = (todoId, checked) => {
+  todoArr.forEach((todo) => {
+    if (todo.id == todoId) {
+      todo.isDone = checked;
     }
   });
 };
