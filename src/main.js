@@ -9,3 +9,7 @@ render.inboxTab();
 document.querySelector(".inbox-el").addEventListener("click", function () {
   render.inboxTab();
 });
+
+document.querySelector(".today-el").addEventListener("click", function () {
+  render.todayTab();
+});

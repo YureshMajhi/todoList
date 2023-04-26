@@ -1,21 +1,30 @@
-import { container } from "../InboxTab/inboxTab";
-
-export let todoArr = [];
+import { container } from "../../component";
 
 export const todoLocal = JSON.parse(localStorage.getItem("todoArr"));
+export let todoArr = [];
+export let filteredArr = [];
 
-/* if Local storage exists then assigning the value of todoArr
-to todoLocal from Inbox tab */
+const today = new Date();
+
+/* assigning value from local storage */
 export function setTodoArr(newTodoArr) {
   todoArr = newTodoArr;
+
+  filteredArr = todoArr.filter((todo) => {
+    const todoDate = new Date(todo.date);
+    return (
+      todoDate.getFullYear() == today.getFullYear() &&
+      todoDate.getMonth() == today.getMonth() &&
+      todoDate.getDate() == today.getDate()
+    );
+  });
 }
 
-// Creating a div to list all todo items
 const todoDiv = document.createElement("div");
 todoDiv.classList.add("todoList");
 
-// rendering the list of todo in the page
-export const renderTodo = () => {
+// Main function to render
+export const renderTodo = (todoArr) => {
   todoDiv.innerHTML = "";
 
   todoArr.forEach(function (todo) {
@@ -59,13 +68,12 @@ export const renderTodo = () => {
     todoDiv.appendChild(individualDiv);
     container.appendChild(todoDiv);
   });
-
-  localStorage.setItem("todoArr", JSON.stringify(todoArr));
 };
 
 const deleteTodo = (e) => {
   removeTodo(e);
-  renderTodo();
+  renderTodo(todoArr);
+  localStorage.setItem("todoArr", JSON.stringify(todoArr));
 };
 
 const removeTodo = (e) => {
@@ -85,7 +93,8 @@ const changeTodo = (e) => {
   const checked = checkbox.checked;
 
   toggleTodo(todoId, checked);
-  renderTodo();
+  renderTodo(todoArr);
+  localStorage.setItem("todoArr", JSON.stringify(todoArr));
 };
 
 const toggleTodo = (todoId, checked) => {

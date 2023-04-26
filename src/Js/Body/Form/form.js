@@ -1,5 +1,5 @@
 import { todoArr } from "../Todo Array/todoArr";
-import { renderTodo } from "../Todo Array/todoArr";
+import { inboxTabFile } from "../InboxTab/inboxTab";
 
 const title = document.querySelector("#title");
 const description = document.querySelector("#description");
@@ -32,8 +32,8 @@ document.querySelector("#submit").addEventListener("click", function (event) {
 
   document.querySelector(".form-container").style = "display: none";
 
-  // Rendering the new todo in the page
-  renderTodo();
+  inboxTabFile();
+  localStorage.setItem("todoArr", JSON.stringify(todoArr));
 });
 
 // ------------------------------------------------------------------------------------------------------------------------
