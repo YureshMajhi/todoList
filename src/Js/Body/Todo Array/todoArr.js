@@ -1,4 +1,5 @@
 import { container } from "../../component";
+import { header } from "../../component";
 
 export const todoLocal = JSON.parse(localStorage.getItem("todoArr"));
 export let todoArr = [];
@@ -7,9 +8,11 @@ export let filteredArr = [];
 const today = new Date();
 
 /* assigning value from local storage */
-export function setTodoArr(newTodoArr) {
+export const setTodoArr = (newTodoArr) => {
   todoArr = newTodoArr;
+};
 
+export const todayArr = () => {
   filteredArr = todoArr.filter((todo) => {
     const todoDate = new Date(todo.date);
     return (
@@ -18,7 +21,9 @@ export function setTodoArr(newTodoArr) {
       todoDate.getDate() == today.getDate()
     );
   });
-}
+
+  return filteredArr;
+};
 
 const todoDiv = document.createElement("div");
 todoDiv.classList.add("todoList");
@@ -72,8 +77,14 @@ export const renderTodo = (todoArr) => {
 
 const deleteTodo = (e) => {
   removeTodo(e);
-  renderTodo(todoArr);
   localStorage.setItem("todoArr", JSON.stringify(todoArr));
+
+  // rendering according to page
+  if (header.textContent == "Inbox") {
+    renderTodo(todoArr);
+  } else if (header.textContent == "Today") {
+    renderTodo(todayArr());
+  }
 };
 
 const removeTodo = (e) => {

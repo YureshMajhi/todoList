@@ -1,8 +1,8 @@
 import {
   setTodoArr,
   todoLocal,
-  filteredArr,
   renderTodo,
+  todayArr,
 } from "../Todo Array/todoArr.js";
 import { header, container } from "../../component.js";
 
@@ -15,6 +15,6 @@ export const todayTabFile = () => {
 
   if (todoLocal) {
     setTodoArr(todoLocal);
-    renderTodo(filteredArr);
+    renderTodo(todayArr());
   }
 };
