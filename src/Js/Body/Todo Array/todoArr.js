@@ -22,6 +22,19 @@ export const todayArr = () => {
   });
 };
 
+export const currentWeekArr = () => {
+  const today = new Date();
+  const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay())); // Sunday
+  const endOfWeek = new Date(
+    today.setDate(today.getDate() - today.getDay() + 6)
+  ); // Saturday
+
+  return todoArr.filter((todo) => {
+    const todoDate = new Date(todo.date);
+    return todoDate >= startOfWeek && todoDate <= endOfWeek;
+  });
+};
+
 const todoDiv = document.createElement("div");
 todoDiv.classList.add("todoList");
 
@@ -72,6 +85,7 @@ export const renderTodo = (todoArr) => {
   });
 };
 
+// delete funtionality
 const deleteTodo = (e) => {
   removeTodo(e);
   localStorage.setItem("todoArr", JSON.stringify(todoArr));
@@ -82,6 +96,8 @@ const deleteTodo = (e) => {
     renderTodo(todoArr);
   } else if (header.textContent == "Today") {
     renderTodo(todayArr());
+  } else if (header.textContent == "This Week") {
+    renderTodo(currentWeekArr());
   }
 };
 
@@ -95,6 +111,7 @@ const removeTodo = (e) => {
   });
 };
 
+// Checkbox functionality
 const changeTodo = (e) => {
   const checkbox = e.target;
 

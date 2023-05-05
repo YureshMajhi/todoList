@@ -13,3 +13,7 @@ document.querySelector(".inbox-el").addEventListener("click", function () {
 document.querySelector(".today-el").addEventListener("click", function () {
   render.todayTab();
 });
+
+document.querySelector(".this_week-el").addEventListener("click", function () {
+  render.weekTab();
+});
