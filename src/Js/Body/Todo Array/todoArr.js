@@ -1,3 +1,5 @@
+// Model
+// Model
 import { container } from "../../component";
 import { header } from "../../component";
 
@@ -6,38 +8,11 @@ export let todoArr = [];
 
 const today = new Date();
 
-/* assigning value from local storage */
-export const setTodoArr = (newTodoArr) => {
-  todoArr = newTodoArr;
-};
-
-export const todayArr = () => {
-  return todoArr.filter((todo) => {
-    const todoDate = new Date(todo.date);
-    return (
-      todoDate.getFullYear() == today.getFullYear() &&
-      todoDate.getMonth() == today.getMonth() &&
-      todoDate.getDate() == today.getDate()
-    );
-  });
-};
-
-export const currentWeekArr = () => {
-  const today = new Date();
-  const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay())); // Sunday
-  const endOfWeek = new Date(
-    today.setDate(today.getDate() - today.getDay() + 6)
-  ); // Saturday
-
-  return todoArr.filter((todo) => {
-    const todoDate = new Date(todo.date);
-    return todoDate >= startOfWeek && todoDate <= endOfWeek;
-  });
-};
-
 const todoDiv = document.createElement("div");
 todoDiv.classList.add("todoList");
 
+// View
+// View
 // Main function to render
 export const renderTodo = (todoArr) => {
   todoDiv.innerHTML = "";
@@ -83,6 +58,41 @@ export const renderTodo = (todoArr) => {
     todoDiv.appendChild(individualDiv);
     container.appendChild(todoDiv);
   });
+};
+
+// Architecture
+// Architecture
+/* assigning value from local storage */
+export const setTodoArr = (newTodoArr) => {
+  todoArr = newTodoArr;
+};
+
+export const todayArr = () => {
+  return todoArr.filter((todo) => {
+    const todoDate = new Date(todo.date);
+    return (
+      todoDate.getFullYear() == today.getFullYear() &&
+      todoDate.getMonth() == today.getMonth() &&
+      todoDate.getDate() == today.getDate()
+    );
+  });
+};
+
+export const currentWeekArr = () => {
+  const today = new Date();
+  const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay())); // Sunday
+  const endOfWeek = new Date(
+    today.setDate(today.getDate() - today.getDay() + 6)
+  ); // Saturday
+
+  return todoArr.filter((todo) => {
+    const todoDate = new Date(todo.date);
+    return todoDate >= startOfWeek && todoDate <= endOfWeek;
+  });
+};
+
+export const completedArr = () => {
+  return todoArr.filter((todo) => todo.isDone);
 };
 
 // delete funtionality

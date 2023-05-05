@@ -17,3 +17,7 @@ document.querySelector(".today-el").addEventListener("click", function () {
 document.querySelector(".this_week-el").addEventListener("click", function () {
   render.weekTab();
 });
+
+document.querySelector(".completed-el").addEventListener("click", function () {
+  render.completedTab();
+});
