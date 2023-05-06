@@ -129,7 +129,16 @@ const changeTodo = (e) => {
   const checked = checkbox.checked;
 
   toggleTodo(todoId, checked);
-  renderTodo(todoArr);
+
+  // rendering according to page
+  if (header.textContent == "Inbox") {
+    renderTodo(todoArr);
+  } else if (header.textContent == "Today") {
+    renderTodo(todayArr());
+  } else if (header.textContent == "This Week") {
+    renderTodo(currentWeekArr());
+  }
+
   localStorage.setItem("todoArr", JSON.stringify(todoArr));
 };
 
