@@ -101,14 +101,7 @@ const deleteTodo = (e) => {
   localStorage.setItem("todoArr", JSON.stringify(todoArr));
   todoLocal = JSON.parse(localStorage.getItem("todoArr"));
 
-  // rendering according to page
-  if (header.textContent == "Inbox") {
-    renderTodo(todoArr);
-  } else if (header.textContent == "Today") {
-    renderTodo(todayArr());
-  } else if (header.textContent == "This Week") {
-    renderTodo(currentWeekArr());
-  }
+  checkPage();
 };
 
 const removeTodo = (e) => {
@@ -129,15 +122,7 @@ const changeTodo = (e) => {
   const checked = checkbox.checked;
 
   toggleTodo(todoId, checked);
-
-  // rendering according to page
-  if (header.textContent == "Inbox") {
-    renderTodo(todoArr);
-  } else if (header.textContent == "Today") {
-    renderTodo(todayArr());
-  } else if (header.textContent == "This Week") {
-    renderTodo(currentWeekArr());
-  }
+  checkPage();
 
   localStorage.setItem("todoArr", JSON.stringify(todoArr));
 };
@@ -148,4 +133,15 @@ const toggleTodo = (todoId, checked) => {
       todo.isDone = checked;
     }
   });
+};
+
+// Check page before rendering
+const checkPage = () => {
+  if (header.textContent == "Inbox") {
+    renderTodo(todoArr);
+  } else if (header.textContent == "Today") {
+    renderTodo(todayArr());
+  } else if (header.textContent == "This Week") {
+    renderTodo(currentWeekArr());
+  }
 };
